@@ -18,6 +18,9 @@ if (LINE.trim().length === 0) {
 if (LINE.includes("\n") || LINE.includes("\r")) {
   throw new Error("Line must be a single line");
 }
+if (LINE !== LINE.trim()) {
+  throw new Error("Line must not have leading or trailing whitespace");
+}
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output/entry.txt";
 const outPath = outDir.endsWith("entry.txt") ? outDir : join(outDir, "entry.txt");
